@@ -12,8 +12,6 @@ interface MyComponentProps extends ChildrenProps {
 }
 
 const DragItem = (props: MyComponentProps) => {
-  const { users, setUsers } = useContext(UserContext);
-
   const [dragStartItemIndex, setdragStartItemIndex] = useState<number>();
   const [dragOverItemIndex, setDragOverItemIndex] = useState<number>();
   const [onDropContext, setOnDropContext] = useState<OnDropType>();
@@ -29,29 +27,15 @@ const DragItem = (props: MyComponentProps) => {
     setdragStartItemIndex(index);
   };
 
-  // const handleDrop = (index: number, dragStart: number) => {
-  //   onDropContext!(index, dragStart!);
-  // };
+  const handleDrop = (index: number, dragStart: number) => {
+    onDropContext!(index, dragStart!);
+  };
 
   const handleDragOver = (event: React.DragEvent<HTMLLIElement>) => {
     onDragOverContext!(event);
   };
 
-  // const handleDragOver = (event: React.DragEvent<HTMLLIElement>) => {
-  //   event.preventDefault();
-  // };
-
-  const handleDrop = (index: number, dragStartItemIndex: number) => {
-    const _users = [...users!];
-    const dragItem = _users.splice(dragStartItemIndex!, 1)[0];
-    console.log(dragItem);
-    _users.splice(dragOverItemIndex!, 0, dragItem);
-    console.log(_users);
-    setUsers!(_users);
-  };
-
   const handleDragEnter = (index: number) => {
-    // console.log(dragOverItemIndex);
     setDragOverItemIndex(index);
   };
 

@@ -2,7 +2,6 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
-  useState,
   Dispatch,
   SetStateAction,
 } from "react";
@@ -25,12 +24,8 @@ const DragArea = (props: DragAreaProps) => {
   };
 
   const handleDrop = (index: number, dragStartItemIndex: number) => {
-    console.log(index, dragStartItemIndex);
     const _users = [...users!];
-    const teeest = _users.splice(index!, 1);
-    console.log("testino");
-    console.log(teeest);
-    const dragItem = _users.splice(index!, 1)[0];
+    const dragItem = _users.splice(dragStartItemIndex!, 1)[0];
     _users.splice(index, 0, dragItem);
     setUsers!(_users);
   };
