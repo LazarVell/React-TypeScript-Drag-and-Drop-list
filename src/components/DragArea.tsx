@@ -25,7 +25,7 @@ const DragArea = (props: DragAreaProps) => {
 
   const handleDrop = (index: number, dragStartItemIndex: number) => {
     const _users = [...users!];
-    const dragItem = _users.splice(dragStartItemIndex!, 1)[0];
+    const dragItem = _users.splice(dragStartItemIndex, 1)[0];
     _users.splice(index, 0, dragItem);
     setUsers!(_users);
   };
